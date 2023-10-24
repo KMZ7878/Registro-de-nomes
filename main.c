@@ -1,11 +1,11 @@
-#include <stdio.h> //biblioteca de comunica��o com o usu�rio
-#include <stdlib.h> //biblioteca de aloca��o de espa�o em mem�ria (banco de dados)
-#include <locale.h> //biblioteca de aloca��es de texto por regi�o
-#include <string.h> //biblioteca respons�vel por cuidar das string
+#include <stdio.h> //biblioteca de comunicaï¿½ï¿½o com o usuï¿½rio
+#include <stdlib.h> //biblioteca de alocaï¿½ï¿½o de espaï¿½o em memï¿½ria (banco de dados)
+#include <locale.h> //biblioteca de alocaï¿½ï¿½es de texto por regiï¿½o
+#include <string.h> //biblioteca responsï¿½vel por cuidar das string
 
-int registro(){ //registra usuários 
+int registro(){ //registra usuÃ¡rios 
 
-    //criação de variáveis
+    //criaÃ§Ã£o de variÃ¡veis
 
     char arquivo[40];
     char cpf[40];
@@ -14,12 +14,12 @@ int registro(){ //registra usuários
     char cargo[40];
 
 
-    printf("Digite o CPF a ser cadastrado"); //coletando informações do usuários
+    printf("Digite o CPF a ser cadastrado"); //coletando informaÃ§Ãµes do usuÃ¡rios
     scanf("%s", cpf);   //%s refere-se a string
 
     strcpy(arquivo, cpf); //copia valores das string
 
-    FILE *file; //cria�ao do arquivo de banco de dados
+    FILE *file; //criaï¿½ao do arquivo de banco de dados
     file = fopen(arquivo, "w"); //cria o arquivo "w" = write 
     fprintf(file,cpf); //salva o valor da variavel
     fclose(file); //fecha o arquivo
@@ -74,12 +74,12 @@ int consulta_de_nomes(){
     file = fopen(cpf,"r"); //"r" = read
 
     if(file ==  NULL){
-        printf("N�o localizado.\n");
+        printf("Não localizado.\n");
     }
 
     while (fgets(conteudo, 200, file) != NULL)
     {
-        printf("\nEssas s�o as informa��es do usu�rio:  ");
+        printf("\nEssas são as informações do usuário:  ");
         printf("%s", conteudo);
         printf("\n\n");
     }
@@ -102,26 +102,36 @@ int deletar_nomes(){
     file = fopen(cpf, "r");
 
     if(file == NULL){
-        printf("Usu�rio n�o encontrado");
+        printf("Usuário não encontrado");
         system("pause");
     }
 
 }
-int main()
-{
+int main(){
     
-    int opcao=0; //variaveis
-    
+    int opcao=0; //variaveis   
     int laco=1;
+    char senhadigitada[]="a";
+    int comparacao;
 
-    for(laco=1;laco=1;){
+    printf("### Cartório da EBAC ###\n\n");
+    printf("Login de administrador!\n\nDigite a seua senha: ");
+    scanf("%s",senhadigitada);
+
+    comparacao = strcmp(senhadigitada, "admin");
+    if(comparacao == 0)
+    {
+
+        system("cls");
+    for(laco=1;laco=1;)
+    {
             
         system("cls");
 
         setlocale(LC_ALL, "Portuguese_Brazil"); //linguagem
 
-        printf("### Cart�rio da EBAC ###\n\n"); //inicio do menu
-        printf("Escolha a op��o que mais lhe agrada\n\n");
+        printf("### Cartório da EBAC ###\n\n"); //inicio do menu
+        printf("Escolha a opção que mais lhe agrada\n\n");
         printf("\t1 - Registrar nomes\n");
         printf("\t2 - Consultar nomes\n");
         printf("\t3 - Deletar nomes\n");
@@ -149,9 +159,10 @@ int main()
         break;
 
         default:
-            printf("Essa op��o existe.\n");
+            printf("Essa opção existe.\n");
             system("pause");
             break;
         }
     }//fim das escolhas
-}   
+}
+}
